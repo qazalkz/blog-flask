@@ -1,0 +1,22 @@
+<DOCTYPE html>
+<html lan="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}{% endblock title %}
+		</title>
+		
+		<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+		
+		{% include 'navbar.html' %}
+
+	</head>
+	<body>
+		<div class="jumbotron">
+			{% include 'ink/messages.html' %}
+			{% block body %}{% endblock body %}	
+		<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	</div>
+	</body>
+</html>
+

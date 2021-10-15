@@ -1,0 +1,22 @@
+
+{% block content %}
+<div id='navbar'>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}">
+
+    <ul>
+    
+        <li><a style='text-decoration: none;' href="{{ url_for('index') }}"> Axter </a></li>
+        <li><a style='text-decoration: none;' href="#"> Posts</a></li>
+        <li><a style='text-decoration: none;'  href="#"> Categories</a></li>
+        <li><a style='text-decoration: none;'  href="#"> About Us</a></li>
+        <li><a style='text-decoration: none;'  href="{{ url_for('register') }}"> Register</a></li>
+        <li><a style='text-decoration: none;'  href="{{ url_for('login') }}"> Login</a></li>
+        
+    </ul>
+    
+    
+    
+    
+    </div>
+
+{% endblock %}    
