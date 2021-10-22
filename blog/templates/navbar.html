@@ -9,9 +9,15 @@
         <li><a style='text-decoration: none;' href="#"> Posts</a></li>
         <li><a style='text-decoration: none;'  href="#"> Categories</a></li>
         <li><a style='text-decoration: none;'  href="#"> About Us</a></li>
-        <li><a style='text-decoration: none;'  href="{{ url_for('register') }}"> Register</a></li>
-        <li><a style='text-decoration: none;'  href="{{ url_for('login') }}"> Login</a></li>
-        
+        {% if current_user.is_authenticated %}
+            <li><a style='text-decoration: none;'  href="{{ url_for('logout') }}"> Logout</a></li>
+
+        {% else %}
+            <li><a style='text-decoration: none;'  href="{{ url_for('register') }}"> Register</a></li>
+            <li><a style='text-decoration: none;'  href="{{ url_for('login') }}"> Login</a></li>
+        {% endif %}
+
+
     </ul>
     
     

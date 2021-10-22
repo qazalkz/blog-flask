@@ -1,15 +1,13 @@
 
 import hashlib
-import secrets
-# from PIL import Image
 from flask.globals import request
 from flask.helpers import flash
 from wtforms.validators import Email
 from blog import app, db, bcrypt, images
 from blog.forms import RegistratoinForm, LoginForm
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 from blog.models import User
-from flask_login import login_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route('/')
@@ -34,14 +32,17 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username= form.username.data).first()
         print(user)
-        if user and bcrypt.check_password_hash(form.password, form.password.data):
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember= form.remember.data)
+            next_page = request.args.get('next', None)
             flash('Logged in Successfully!', category="info")
-            return redirect(url_for('index'))
+            return redirect(next_page if next_page else url_for('index'))
 
         else:
             flash('Usernae or Password is not Correct!' , category='primary')    
@@ -50,5 +51,8 @@ def login():
 
 
 @app.route('/logout')
+@login_required
 def logout():
-    pass
+    logout_user()
+    flash('Logged Out!', category="info")
+    return redirect(url_for('index'))

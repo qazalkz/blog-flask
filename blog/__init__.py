@@ -18,5 +18,9 @@ bcrypt = Bcrypt(app)
 images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
 login_manager= LoginManager(app)
+login_manager.login_view = "login"    # redirect to login page
+login_manager.login_message = "Please Login!"
+login_manager.login_message_category = "info"
+
 
 from blog import routes
