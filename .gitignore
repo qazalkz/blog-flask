@@ -165,5 +165,9 @@ pip-selfcheck.json
 
 blog.db
 /static/image
+*/image
+*/static
+/static
+/image
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,venv
