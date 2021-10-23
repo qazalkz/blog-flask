@@ -10,32 +10,33 @@ Login
 <h1 class="font-weight-bold">Login</h1>
 <br>
 
+	{% include "ink/form_errors.html" %}
 
-<form  method="POST" class="needs-validation" enctype="multipart/form-data">
-	{{ form.hidden_tag() }}
-	{{ form.crf_token }}
+		<form  method="POST" class="needs-validation" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			{{ form.crf_token }}
 
-	<div class="form-row">
-		<div class="col">
-			{{ form.username.label(class='form-control-lable') }}:
-		       	{{ form.username(class='form-control') }}
-		</div>
-	
+			<div class="form-row">
+				<div class="col">
+					{{ form.username.label(class='form-control-lable') }}:
+						{{ form.username(class='form-control') }}
+				</div>
+			
 
-		<div class="col">
-			{{ form.password.label(class='form-control-lable') }}:
-		       	{{ form.password(class='form-control') }}
-		</div>
+				<div class="col">
+					{{ form.password.label(class='form-control-lable') }}:
+						{{ form.password(class='form-control') }}
+				</div>
 
 
-		<div class="col">
-			Submit:
-			<br>
-			<input type="submit" value="Login" class='btn btn-info btn-lg'></input>
-		</div>
-	</div>
+				<div class="col">
+					Submit:
+					<br>
+					<input type="submit" value="Login" class='btn btn-info btn-lg'></input>
+				</div>
+			</div>
 
-</form>
+		</form>
 
 {% endblock body %}
 

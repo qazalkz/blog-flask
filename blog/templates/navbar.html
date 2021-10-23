@@ -10,7 +10,9 @@
         <li><a style='text-decoration: none;'  href="#"> Categories</a></li>
         <li><a style='text-decoration: none;'  href="#"> About Us</a></li>
         {% if current_user.is_authenticated %}
-            <li><a style='text-decoration: none;'  href="{{ url_for('logout') }}"> Logout</a></li>
+            <li><a style='text-decoration: none;'  href="{{ url_for('profile') }}">  {{ current_user.name }}</a></li>
+            <li><a style='text-decoration: none;'  href="{{ url_for('logout') }}"> Logout </a></li>
+
 
         {% else %}
             <li><a style='text-decoration: none;'  href="{{ url_for('register') }}"> Register</a></li>
