@@ -75,6 +75,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+
 # Flask stuff:
 instance/
 
@@ -160,5 +161,9 @@ cython_debug/
 [Ss]cripts
 pyvenv.cfg
 pip-selfcheck.json
+
+
+blog.db
+/static/image
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,venv
