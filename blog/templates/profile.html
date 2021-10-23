@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Profile
+{{ current_user.name }} Profile 
 {% endblock title %}
 
 
 
 {% block body %}
 
-{{ current_user.avatar }}
+{{ current_user.avatar }}    
 <h3> {{ current_user.name }}</h3>
 <p> {{ current_user.email }}</p>
 <p> {{ current_user.username }}</p>
