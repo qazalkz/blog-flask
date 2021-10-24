@@ -36,18 +36,16 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username= form.username.data).first()
-        print(user)
+        user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember= form.remember.data)
+            login_user(user, remember=form.remember.data)
             next_page = request.args.get('next', None)
             flash('Logged in Successfully!', category="info")
             return redirect(next_page if next_page else url_for('index'))
 
         else:
-            flash('Username or Password is not Correct!' , category='primary')    
+            flash('Username or Password is not Correct!', category='primary')
     return render_template('login.html', form=form)
-
 
 
 @app.route('/logout')
@@ -58,7 +56,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET'])
 @login_required
 def profile():
     return render_template('profile.html')
