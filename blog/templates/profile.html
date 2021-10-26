@@ -9,7 +9,7 @@
 {% block body %}
 
 
-<img src="{{url_for('static/images', filename=current_user.avatar)}}">   
+<img src="{{url_for('static', filename='images/'+current_user.avatar)}}">   
 <!-- fix the avatar images showing  -->
 
 <h3> {{ current_user.name }}</h3>
