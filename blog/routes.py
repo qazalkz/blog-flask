@@ -56,7 +56,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/profile', methods=['GET'])
+@app.route('/profile')
 @login_required
 def profile():
     return render_template('profile.html')
