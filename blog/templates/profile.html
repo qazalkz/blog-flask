@@ -8,14 +8,19 @@
 
 {% block body %}
 
+<div style="background-size: cover; height:200px; padding-top:20px;">
+    <img src="{{url_for('static', filename='images/'+current_user.avatar)}}" style="height:200px " class="rounded float-left" alt="Avatar">   
 
-<img src="{{url_for('static', filename='images/'+current_user.avatar)}}">   
-<!-- fix the avatar images showing  -->
 
-<h3> {{ current_user.name }}</h3>
-<p> {{ current_user.email }}</p>
-<p> {{ current_user.username }}</p>
+    <!-- fix the avatar images showing  -->
+    <!-- its done! --> 
+<br>
 
+            <h3 style="margin-left: 400px;"> {{ current_user.name }}</h3>
+            <p style="margin-left: 400px;"> {{ current_user.email }}</p>
+            <p style="margin-left: 400px;"> {{ current_user.username }}</p>
+            <button style="margin-left: 35px;" class="btn btn-info" > Edit Profile </button>
+    </div>
 
 
 {% endblock body %}
