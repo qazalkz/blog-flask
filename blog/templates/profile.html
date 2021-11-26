@@ -7,20 +7,43 @@
 
 
 {% block body %}
+    <div class="content-section">
+        <div class="media">
 
-<div style="background-size: cover; height:200px; padding-top:20px;">
-    <img src="{{url_for('static', filename='images/'+current_user.avatar)}}" style="height:200px " class="rounded float-left" alt="Avatar">   
+            <!-- <div style="background-size: cover; height:200px; padding-top:20px;"> -->
+            <img src="{{url_for('static', filename='images/'+current_user.avatar)}}" style="height:200px " class="rounded-circle account-img" alt="Avatar">   
+            <!-- fix the avatar images showing  -->
+            <!-- its done! --> 
 
 
-    <!-- fix the avatar images showing  -->
-    <!-- its done! --> 
-<br>
+        </div>
 
-            <h3 style="margin-left: 400px;"> {{ current_user.name }}</h3>
-            <p style="margin-left: 400px;"> {{ current_user.email }}</p>
-            <p style="margin-left: 400px;"> {{ current_user.username }}</p>
-            <button style="margin-left: 35px;" class="btn btn-info" > Edit Profile </button>
+        <br />
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+
+                        <div class="media-body">
+                            <h3 > {{ current_user.name }}</h3>
+                            <p > {{ current_user.email }}</p>
+                            <p > {{ current_user.username }}</p>
+                        </div>
+            </fieldset>
+
+        <div class="form-group">
+            <!-- <div class="row justify-content-center"> -->
+           
+            <button  class="btn btn-info "> Edit Profile </button>
+
+        </div>
+
+
+        <!-- <div class="row justify-content-center"> -->
+        <div>
+        
+            <a href="{{ url_for('new_post') }}" class="btn btn-primary">Create Poste</a>
+        
+        </div>
+ 
     </div>
-
 
 {% endblock body %}

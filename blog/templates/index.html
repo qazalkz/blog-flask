@@ -1,2 +1,17 @@
 {% extends 'base.html' %}
 
+{% block body %}
+
+<div class="card">
+    {% for post in posts %}
+        <img class="rounded-circle article-img" src="{{url_for('static', filename='images/'+post.author.avatar)}}"
+            style="width:80px ">
+        <a href="{{url_for('detail', post_id=post.id) }}" class="card-body" >{{ post.title }}</a>
+            <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+            <p class="article-content">{{ post.content }}</p>
+        <hr>    
+            
+    {% endfor %}
+
+</div>
+{% endblock %}

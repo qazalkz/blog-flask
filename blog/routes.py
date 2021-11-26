@@ -4,16 +4,21 @@ from flask.globals import request
 from flask.helpers import flash
 from wtforms.validators import Email
 from blog import app, db, bcrypt, images
-from blog.forms import RegistratoinForm, LoginForm
+from blog.forms import RegistratoinForm, LoginForm, PostForm
 from flask import render_template, redirect, url_for, request
-from blog.models import User
+from blog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    posts = Post.query.all()
+    return render_template('index.html', posts=posts)
 
+@app.route('/post/<int:post_id>')
+def detail(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('detail.html', post=post)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,3 +65,16 @@ def logout():
 @login_required
 def profile():
     return render_template('profile.html')
+
+
+@app.route("/post/new", methods=['GET', 'POST']) 
+@login_required  
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash("Your post has been created!", category="success")
+        return redirect(url_for("index"))
+    return render_template('create_post.html', tilte="new post", form=form)

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+        <!-- <h3><em>{{ post.title }}</em></h3>
+        <small>{{ post.author.username }} {{ post.date.strftime('%Y-%m-%d') }}</small>
+        <p>{{ post.content }}</p> -->
+<article class="media content-section">
+    <img class="rounded-circle article-img"
+        src="{{url_for('static', filename='images/'+post.author.avatar)}}" style="width:80px ">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.author.name}}</a>
+            <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <hr>
+        <h2> {{ post.title }}</h2>
+        
+        <p  class="text-justify" >{{ post.content }}</p>
+        
+        
+    </div>
+    </article>
+
+
+
+{% endblock %}

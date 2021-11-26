@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+New Post
+{% endblock title %}
+
+{% block body %}
+
+
+
+<br>
+
+{% include "ink/form_errors.html" %}
+
+<form method="POST" class="needs-validation" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.crf_token }}
+
+
+            {{ form.title.label(class='form-control-lable')}}  {{ form.title(class='form-control') }}
+
+
+
+            {{ form.content.label(class='form-control-lable') }}  {{ form.content(class='form-control') }}
+
+
+
+
+        <div class="col">
+
+            <br>
+            <input type="submit" value="Post" class='btn btn-info btn-lg'></input>
+            <br />
+
+        </div>
+
+    </div>
+
+</form>
+
+{% endblock body %}
